@@ -61,10 +61,14 @@ while True:
 
     if player_input == "n":
         if current_room.n_to is not None:
-            player1.current_room = current_room.n_to
-            print(f"You chose North. You are now in: {player1.current_room.name}")
+            player1.location = current_room.n_to
+            print(f"You chose North.")
         else:
             print(f"There is no available room there. Try another direction!")
+    elif player_input == "s":
+        if current_room.s_to is not None:
+            player1.location = current_room.s_to
+            print(f"You chose South. You are now in: {player1.location.name}")
 
 
         
