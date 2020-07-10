@@ -50,7 +50,7 @@ player1 = Player("eric", room["outside"])
 while True:
     current_room = player1.location
     print(f"You are currently in room: {current_room.name}")
-    print(f"Your room description: {current_room.description}")
+    print(f"Your room description: {current_room.description} \n")
 
     player_input = input("Enter your next move: n, s, e, w or q to quit:")
 #
@@ -64,11 +64,36 @@ while True:
             player1.location = current_room.n_to
             print(f"You chose North.")
         else:
-            print(f"There is no available room there. Try another direction!")
+            print(f"There is no available room there. Try another direction! \n")
+    
     elif player_input == "s":
         if current_room.s_to is not None:
             player1.location = current_room.s_to
-            print(f"You chose South. You are now in: {player1.location.name}")
+            print(f"You chose South")
+        else:
+            print("There is no available room there. Try another direction! \n")
+    
+    elif player_input == "w":
+        if current_room.w_to is not None:
+            player1.location = current_room.w_to
+            print(f"You chose West")
+        else:
+            print("There is no available room there. Try another direction! \n")
+    
+    elif player_input == "e":
+        if current_room.e_to is not None:
+            player1.location = current_room.e_to
+            print ("You chose East")
+        else:
+            print("There is no available room there. Try another direction! \n")
+    
+    elif player_input == "q":
+        print ("You selected to quit the game. Bye!")
+        exit()
+    
+    else:
+        print("Please make sure you only choose one of the following: n, s, e, w or q to quit: \n")
+        
 
 
         
