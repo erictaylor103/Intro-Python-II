@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -38,14 +38,65 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player1 = Player("Eric", room["outside"])
 
 # Write a loop that:
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
+while True:
+    current_room = player1.location
+    print("\n")
+    print("-----------------------------------------------")
+    print("\n")
+    print(f"Current Room: {player1.location.name}")
+    print(f"Description: {player1.location.description} \n")
+    #print(f"Description: {player1.location.description}")
+    player_input = input("Which way now?: [n]North, [s]South, [e]East, [w]West, [q]Quit Game: ")
+    print("\n")
+    print("-----------------------------------------------")
+    
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
+    if player_input == "n":
+        if current_room.n_to is not None:
+            player1.location = current_room.n_to
+            print("\n")
+            print("You chose North")
+        else:
+            print("|||||You can't go that way...Try another Direction|||||")
+    
+    elif player_input == "s":
+        if current_room.s_to is not None:
+            player1.location = current_room.s_to
+            print("\n")
+            print("You chose South")
+        else:
+            print("|||||You can't go that way...Try another Direction|||||")
+    
+    elif player_input == "e":
+        if current_room is not None:
+            player1.location = current_room.e_to
+            print("\n")
+            print("You chose East")
+        else:
+            print("|||||You can't go that way...Try another Direction|||||")
+    
+    elif player_input == "w":
+        if current_room is not None:
+            player1.location = current_room.w_to
+            print("\n")
+            print("You chose West")
+        else: 
+            print("|||||You can't go that way...Try another Direction|||||")
+    
+    elif player_input == "q":
+        print("You've quit the adventure...see ya another time! \n \n")
+        exit()
+    
+    else:
+        print("Please make sure you only choose one of the following: [n]North, [s]South, [e]East, [w]West, [q]Quit Game: \n")
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
