@@ -2,12 +2,16 @@
 # currently.
 
 class Player:
-    def __init__(self, name, location):
+    def __init__(self, name, location, items=[]):
         self.name = name
         self.location = location
+        self.items = items
     
     def __str__(self):
-        return f"Current Room: {self.location}"
+        return(f"{self.items}")
+
+    def __repr__(self):
+        return(self.items)
 
 #player1 = Player("Eric", "Outside")
 #print(player1)
